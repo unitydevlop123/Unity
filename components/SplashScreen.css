@@ -1,0 +1,41 @@
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  animation: splashFadeIn 0.8s ease-out;
+}
+
+.splash-title {
+  color: white;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  margin: 0;
+}
+
+.splash-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+@keyframes splashFadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

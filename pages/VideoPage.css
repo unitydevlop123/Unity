@@ -1,0 +1,439 @@
+.video-page {
+  width: 100%;
+  height: 100vh; /* Fixed height for app-like feel */
+  background: #0f0f0f;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent body scroll */
+  touch-action: pan-x pan-y; /* Prevent pinch-to-zoom */
+}
+
+.video-header {
+  padding: 8px 16px;
+  padding-top: env(safe-area-inset-top, 8px);
+  display: flex;
+  align-items: center;
+  background: #0f0f0f;
+  z-index: 999; /* Ensure back button is clickable over video player */
+  flex-shrink: 0;
+  position: absolute; /* Overlay on top of video if needed, or keep it minimal */
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); /* Gradient overlay */
+  pointer-events: none; /* Let clicks pass through to video if needed */
+}
+
+.back-button {
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px 16px 8px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: background 0.2s;
+  pointer-events: auto; /* Re-enable clicks */
+  backdrop-filter: blur(4px);
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Elite Layout Wrapper */
+.video-content-wrapper.elite-layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  gap: 0;
+}
+
+/* Sticky Top Section */
+.video-sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #0f0f0f;
+  padding: 0; /* Remove padding to flush video */
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.video-section {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: black;
+  border-radius: 0; /* Remove border radius for full width */
+  overflow: hidden;
+  margin-bottom: 0; /* Remove bottom margin */
+}
+
+/* Video Details */
+.video-details {
+  margin-top: 0;
+  padding: 16px; /* Add padding back to details only */
+  background: #0f0f0f;
+}
+
+.video-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.video-stats {
+  color: #aaaaaa;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.dot-separator {
+  font-size: 10px;
+}
+
+.video-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+  padding-bottom: 0;
+  border-bottom: none; /* Remove border for cleaner look */
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.channel-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+.channel-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.channel-name {
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.verified-icon {
+  color: #3ea6ff; /* YouTube/Twitter Blue */
+}
+
+.action-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  flex-shrink: 0;
+}
+
+.action-stack button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.subscriber-count {
+  font-size: 12px;
+  color: #aaaaaa;
+}
+
+/* Binge Action Button */
+.binge-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.binge-action-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.binge-action-btn:active {
+  transform: translateY(0);
+}
+
+/* Inline Stream Button */
+.stream-button.inline-stream {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 800;
+  border-radius: 20px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+@keyframes pulse-inline {
+  0% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 0, 0, 0.6); }
+  100% { transform: scale(1); box-shadow: 0 0 15px rgba(255, 0, 0, 0.4); }
+}
+
+/* Scrollable Up Next Section */
+.video-up-next-section {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  background: #0f0f0f;
+}
+
+.up-next-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #e5e5e5;
+}
+
+.loading-related {
+  color: #aaaaaa;
+  font-size: 14px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.related-videos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 100px; /* Space for bottom scroll and nav */
+}
+
+.related-video-card {
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.related-video-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.related-thumbnail-container {
+  position: relative;
+  width: 160px;
+  height: 90px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #222;
+}
+
+.related-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.binge-add-btn-small {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  backdrop-filter: blur(4px);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.binge-add-btn-small:hover {
+  background: rgba(255, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.related-duration {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 11px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.related-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.related-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: white;
+}
+
+.related-channel {
+  font-size: 12px;
+  color: #aaaaaa;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 2px;
+}
+
+.related-stats {
+  font-size: 12px;
+  color: #aaaaaa;
+}
+
+/* Responsive adjustments if needed */
+@media (min-width: 1024px) {
+  .video-content-wrapper.elite-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
+  }
+}
+
+/* Notification Animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating Glass Back Button */
+.glass-floating-back-btn {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.glass-floating-back-btn:hover {
+  background: rgba(30, 30, 30, 0.8);
+  border-color: rgba(16, 163, 127, 0.5); /* emerald-500 tint */
+  color: #10a37f;
+  transform: translateY(-2px);
+}
+
+.glass-floating-back-btn:active {
+  transform: translateY(1px) scale(0.95);
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; pointer-events: none; }
+}
+
+.animate-fade-out {
+  animation: fadeOut 14s ease-in-out forwards;
+}
+
+/* Stream Brand Overlay */
+.stream-brand-overlay {
+  position: absolute;
+  top: 20px;
+  top: calc(20px + env(safe-area-inset-top, 0px));
+  left: 0;
+  z-index: 10000; /* Highest priority */
+  padding: 8px 24px 8px 16px; /* More padding on right */
+  background: linear-gradient(90deg, #ff4d4d, #cc0000);
+  border-radius: 0 30px 30px 0; /* Rounded only on right side */
+  box-shadow: 4px 0 20px rgba(255, 0, 0, 0.5);
+  animation: pulse-brand 3s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  min-width: 140px; /* Make it long */
+}
+
+.stream-brand-text {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+@keyframes pulse-brand {
+  0% { transform: scaleX(1); box-shadow: 4px 0 20px rgba(255, 0, 0, 0.5); }
+  50% { transform: scaleX(1.05); box-shadow: 8px 0 30px rgba(255, 0, 0, 0.7); }
+  100% { transform: scaleX(1); box-shadow: 4px 0 20px rgba(255, 0, 0, 0.5); }
+}

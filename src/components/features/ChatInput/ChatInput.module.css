@@ -1,0 +1,383 @@
+/* ── Normal Input Container ──────────────────────────────────── */
+.container {
+  background: var(--input-bg);
+  border-radius: 24px 24px 0 0;
+  padding: 16px 16px 28px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+/* ── Attachment Previews ──────────────────────────────────── */
+.attachPreviews {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.attachCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-tertiary);
+  border-radius: 14px;
+  padding: 10px 14px;
+  min-width: 180px;
+  max-width: 220px;
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.attachRemove {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #636366;
+  border: 2px solid var(--input-bg);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  padding: 0;
+}
+
+.attachCardIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.attachThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.attachCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.attachCardName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.attachCardStatus {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ── Input Box ───────────────────────────────────────────────── */
+.inputBox {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  min-height: 28px;
+}
+
+.textarea {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--input-text);
+  font-size: 17px;
+  line-height: 1.4;
+  font-family: inherit;
+  resize: none;
+  overflow: hidden;
+  max-height: 120px;
+  caret-color: #4d9ef7;
+  transition: color 0.2s;
+}
+
+.textarea::placeholder {
+  color: var(--input-placeholder);
+}
+
+.textarea:focus {
+  color: var(--input-text-active);
+}
+
+.sendBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #4d9ef7;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.sendBtn:hover {
+  background: #3a8de6;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toolBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 50px;
+  border: 1.5px solid var(--toolbar-btn-border);
+  background: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.2s;
+  font-family: inherit;
+  min-height: 44px;
+}
+
+.toolBtn:hover {
+  background: rgba(128, 128, 128, 0.1);
+}
+
+.toolBtnActive {
+  border-color: #4d9ef7 !important;
+  color: #4d9ef7;
+  background: rgba(77, 158, 247, 0.1);
+}
+
+.toolBtnActive:hover {
+  background: rgba(77, 158, 247, 0.18);
+}
+
+.iconBtn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+
+.iconBtn:hover {
+  background: rgba(128, 128, 128, 0.1);
+}
+
+.iconBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Hold to Speak Mode ──────────────────────────────────────── */
+.holdToSpeakBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.holdArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 16px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.holdToSpeakText {
+  color: var(--text-primary);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.holdDivider {
+  height: 1px;
+  background: var(--bg-tertiary);
+  margin: 0 -16px;
+}
+
+/* ── Attach Menu ─────────────────────────────────────────────── */
+.attachMenu {
+  background: var(--bg-secondary);
+  padding: 20px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 24px 24px 0 0;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.attachGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.attachItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--bg-tertiary);
+  border: none;
+  border-radius: 18px;
+  padding: 20px 12px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background 0.15s;
+  min-height: 90px;
+}
+
+.attachItem:hover {
+  background: var(--bg-quaternary);
+}
+
+.attachIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+}
+
+.attachLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.1px;
+}
+
+.attachNote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  padding-bottom: 4px;
+}
+
+/* ── Voice Recording Overlay ─────────────────────────────────── */
+.voiceOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(30, 40, 80, 0.92) 0%, rgba(0, 0, 0, 0) 60%);
+  z-index: 100;
+  padding-bottom: 0;
+  pointer-events: all;
+}
+
+.voiceOverlay.voiceOverlayRed {
+  background: linear-gradient(to top, rgba(80, 20, 20, 0.95) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+.noContentBubble {
+  background: #3a3a3c;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px 28px;
+  border-radius: 22px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.voiceHint {
+  color: #8e8e93;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 20px 0;
+  text-align: center;
+  letter-spacing: -0.1px;
+}
+
+.voiceHoldArea {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: env(safe-area-inset-bottom, 20px);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ── Waveform ────────────────────────────────────────────────── */
+.waveform {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 56px;
+  padding: 0 12px 12px 12px;
+  width: 100%;
+  max-width: 440px;
+}
+
+.waveBar {
+  flex: 1;
+  border-radius: 2px;
+  animation: wavePulse 0.8s ease-in-out infinite alternate;
+  min-height: 4px;
+}
+
+.waveformBlue .waveBar { background: #4d9ef7; }
+.waveformRed .waveBar  { background: #ff453a; }
+
+@keyframes wavePulse {
+  0%   { height: 4px; opacity: 0.5; }
+  100% { height: 32px; opacity: 1; }
+}

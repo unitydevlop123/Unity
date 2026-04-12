@@ -1,0 +1,203 @@
+
+.rate-limit-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  z-index: 9999;
+  -webkit-animation: fadeIn 0.3s ease-out;
+  -moz-animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.3s ease-out;
+  will-change: opacity;
+}
+
+.rate-limit-card {
+  background: var(--chat-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  -webkit-animation: scaleUp 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  -moz-animation: scaleUp 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  animation: scaleUp 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  will-change: transform, opacity;
+}
+
+.rate-limit-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  -webkit-animation: bounce 2s infinite;
+  -moz-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
+  will-change: transform;
+}
+
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: translateY(0); transform: translateY(0); }
+  50% { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+}
+
+@-moz-keyframes bounce {
+  0%, 100% { -moz-transform: translateY(0); transform: translateY(0); }
+  50% { -moz-transform: translateY(-10px); transform: translateY(-10px); }
+}
+
+.rate-limit-content p {
+  margin: 12px 0;
+  line-height: 1.6;
+  color: var(--chat-text);
+  font-size: 15px;
+}
+
+.rate-limit-card.flyer-style {
+  padding: 0;
+  overflow: hidden;
+  max-width: 360px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.flyer-banner {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  flex-shrink: 0;
+}
+
+.flyer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flyer-logo-container {
+  position: absolute;
+  bottom: -20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.flyer-logo {
+  width: 100%;
+  height: 100%;
+}
+
+.rate-limit-content {
+  padding: 24px 16px 12px;
+  flex-grow: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.flyer-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--accent-color, #10a37f);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.flyer-body {
+  max-height: 150px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* Custom scrollbar for flyer body */
+.flyer-body::-webkit-scrollbar {
+  width: 4px;
+}
+.flyer-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.flyer-body::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 10px;
+}
+
+.flyer-paragraph {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--chat-text);
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.flyer-footer {
+  padding: 0 20px 20px;
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.flyer-button {
+  margin-top: 0;
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  background: #10a37f; /* Fallback */
+  background: -webkit-linear-gradient(135deg, var(--accent-color, #10a37f), #0d8a6b);
+  background: -moz-linear-gradient(135deg, var(--accent-color, #10a37f), #0d8a6b);
+  background: linear-gradient(135deg, var(--accent-color, #10a37f), #0d8a6b);
+}
+
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-webkit-keyframes scaleUp {
+  from { opacity: 0; -webkit-transform: scale(0.9); transform: scale(0.9); }
+  to { opacity: 1; -webkit-transform: scale(1); transform: scale(1); }
+}
+
+@-moz-keyframes scaleUp {
+  from { opacity: 0; -moz-transform: scale(0.9); transform: scale(0.9); }
+  to { opacity: 1; -moz-transform: scale(1); transform: scale(1); }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

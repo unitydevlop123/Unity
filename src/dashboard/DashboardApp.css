@@ -1,0 +1,167 @@
+/* DashboardApp.css - Common Layout & Core Variables */
+:root {
+  --db-bg: #020203;
+  --db-card-bg: rgba(15, 15, 20, 0.6);
+  --db-card-border: rgba(255, 255, 255, 0.08);
+  --db-accent-red: #ff3e3e;
+  --db-accent-blue: #00f2ff;
+  --db-accent-green: #00ff88;
+  --db-accent-purple: #bc00ff;
+  --db-glow-red: 0 0 20px rgba(255, 62, 62, 0.3);
+  --db-glow-blue: 0 0 20px rgba(0, 242, 255, 0.3);
+  --db-glow-green: 0 0 20px rgba(0, 255, 136, 0.3);
+  --db-glass-blur: blur(12px);
+}
+
+.db-root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--db-bg);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+.db-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 80px; /* Space for bottom nav */
+}
+
+.db-content {
+  flex: 1;
+  padding: 0; /* Pages handle their own padding */
+  overflow-y: auto;
+  position: relative;
+}
+
+.db-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.db-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.db-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+/* Header Styles */
+.db-header {
+  height: 80px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: var(--db-glass-blur);
+  border-bottom: 1px solid var(--db-card-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.db-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Bottom Nav Styles */
+.db-bottom-nav {
+  height: 74px;
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+}
+
+.db-nav-scroll-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 0 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 0.25rem;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.db-nav-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+@media (min-width: 768px) {
+  .db-nav-scroll-container {
+    justify-content: center;
+    mask-image: none;
+    gap: 0.5rem;
+  }
+}
+
+.db-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 18px;
+  min-width: 80px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.db-nav-item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.db-nav-item.active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.db-nav-label {
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Common Components (Optional but kept for consistency) */
+.db-btn-primary {
+  background: linear-gradient(135deg, var(--db-accent-red) 0%, #b91c1c 100%);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.db-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}

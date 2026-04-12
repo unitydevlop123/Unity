@@ -1,0 +1,368 @@
+/* ── Overlay ──────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 400;
+  display: flex;
+  align-items: flex-end;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.sheet {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--bg-secondary);
+  border-radius: 24px 24px 0 0;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+.handle {
+  width: 40px; height: 4px;
+  background: var(--bg-quaternary);
+  border-radius: 2px;
+  margin: 10px auto 0;
+  flex-shrink: 0;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.headerIcon {
+  font-size: 24px;
+}
+
+.headerTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.headerSub {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 1px;
+}
+
+.closeBtn {
+  margin-left: auto;
+  width: 32px; height: 32px;
+  min-width: 44px; min-height: 44px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-primary);
+  transition: background 0.15s;
+}
+.closeBtn:hover { background: var(--bg-quaternary); }
+
+/* ── Topic ───────────────────────────────────────────────── */
+.topic {
+  padding: 12px 16px;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.topicLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.topicText {
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* ── Body ────────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Character Card ──────────────────────────────────────── */
+.charCard {
+  border-radius: 16px;
+  padding: 14px;
+  border: 1.5px solid var(--border-subtle);
+  background: var(--bg-tertiary);
+}
+
+.advocate {
+  border-color: rgba(77, 158, 247, 0.25);
+  background: rgba(77, 158, 247, 0.05);
+}
+
+.skeptic {
+  border-color: rgba(249, 115, 22, 0.25);
+  background: rgba(249, 115, 22, 0.05);
+}
+
+.charHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.charIcon {
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.charName {
+  font-size: 14px;
+  font-weight: 700;
+  flex: 1;
+}
+
+.streamingBadge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.08);
+  color: var(--text-secondary);
+  animation: pulseBadge 1s ease-in-out infinite;
+}
+
+@keyframes pulseBadge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.charContent {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  min-height: 40px;
+}
+
+/* ── VS Row ──────────────────────────────────────────────── */
+.vsRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vsDivider {
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.vsText {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+}
+
+/* ── Judge Section ───────────────────────────────────────── */
+.judgeSection {
+  border-radius: 16px;
+  padding: 14px;
+  border: 1.5px solid rgba(167, 139, 250, 0.3);
+  background: rgba(124, 58, 237, 0.06);
+  animation: judgeAppear 0.4s ease both;
+}
+
+@keyframes judgeAppear {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.judgeHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.judgeIcon {
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.judgeName {
+  font-size: 14px;
+  font-weight: 700;
+  color: #a78bfa;
+  flex: 1;
+}
+
+.judgeRole {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 1px;
+}
+
+.judgingBadge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: rgba(167, 139, 250, 0.15);
+  color: #a78bfa;
+  animation: pulseBadge 1s ease-in-out infinite;
+}
+
+.verdictBadge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(167, 139, 250, 0.2);
+  color: #a78bfa;
+}
+
+.judgeContent {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-primary);
+  min-height: 40px;
+}
+
+/* ── Think block (collapsible) ──────────────────────────── */
+.thinkBlock {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.thinkToggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 7px 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: left;
+  transition: color 0.15s;
+  min-height: 36px;
+}
+
+.thinkToggle:hover { color: var(--text-secondary); }
+
+.thinkLabel { flex: 1; }
+
+.thinkDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a78bfa;
+  animation: thinkPulse 0.9s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes thinkPulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.thinkContent {
+  padding: 6px 10px 8px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  max-height: 130px;
+  overflow-y: auto;
+}
+
+.thinkLine {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 2px 0;
+  font-style: italic;
+}
+
+/* ── Shared ──────────────────────────────────────────────── */
+.placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background: var(--text-secondary);
+  border-radius: 1px;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer {
+  padding: 14px 16px max(20px, env(safe-area-inset-bottom, 20px));
+  border-top: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.addToChat {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #6d28d9, #4d9ef7);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  min-height: 52px;
+  transition: opacity 0.15s;
+}
+.addToChat:hover { opacity: 0.9; }

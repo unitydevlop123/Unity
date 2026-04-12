@@ -1,0 +1,70 @@
+
+:root {
+  --accent-green: #10a37f;
+  --accent-blue: #3c7eff;
+  --primary-red: #dc2626;
+  --primary-gold: #d97706;
+}
+
+.dark-theme {
+  --sidebar-hover: #212121;
+  --sidebar-active: #2f2f2f;
+  --sidebar-text: #ececec;
+  --sidebar-text-muted: #b4b4b4;
+  
+  --chat-bg: #212121;
+  --chat-text: #ececec;
+  --chat-text-muted: #b4b4b4;
+  
+  --border-light: rgba(255, 255, 255, 0.1);
+  --input-bg: #2f2f2f;
+  --card-bg: #2f2f2f;
+  --card-hover: #383838;
+  --msg-user-bg: #303030;
+  --msg-assistant-bg: transparent;
+}
+
+.light-theme {
+  --sidebar-hover: #ececec;
+  --sidebar-active: #e3e3e3;
+  --sidebar-text: #171717;
+  --sidebar-text-muted: #676767;
+  
+  --chat-bg: #ffffff;
+  --chat-text: #171717;
+  --chat-text-muted: #676767;
+  
+  --border-light: #d1d5db;
+  --input-bg: #f4f4f4;
+  --card-bg: #ffffff;
+  --card-hover: #f9f9f9;
+  --msg-user-bg: #e3e3e3;
+  --msg-assistant-bg: transparent;
+}
+
+/* Theme overrides - these should come AFTER dark/light theme to override them */
+.theme-red {
+  --brand-primary: var(--primary-red);
+  --brand-glow: rgba(220, 38, 38, 0.2);
+}
+
+.theme-gold {
+  --brand-primary: var(--primary-gold);
+  --brand-glow: rgba(217, 119, 6, 0.2);
+}
+
+.theme-blue {
+  --brand-primary: #3b82f6;
+  --brand-glow: rgba(59, 130, 246, 0.2);
+}
+
+.theme-green {
+  --brand-primary: #10b981;
+  --brand-glow: rgba(16, 185, 129, 0.2);
+}
+
+body {
+  background-color: var(--chat-bg);
+  color: var(--chat-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

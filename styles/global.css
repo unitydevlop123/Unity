@@ -1,0 +1,147 @@
+
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Prevent double-tap and pinch zoom */
+  touch-action: pan-x pan-y;
+}
+
+html, body {
+  /* Force background color with !important */
+  background-color: #000000 !important;
+  /* Prevent pull-to-refresh and rubber-banding */
+  overscroll-behavior-y: auto;
+  /* Ensure text size doesn't adjust on orientation change */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #171717;
+}
+
+/* 
+  PREVENT INPUT ZOOM ON IOS 
+  Inputs must be at least 16px to prevent OS-level zoom on focus
+*/
+input, textarea, select, button {
+  font-size: 16px !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* =========================================
+   GLOBAL DISPLAYER (IMAGE ENHANCEMENTS)
+   ========================================= */
+
+/* 4K HDR: High contrast, high saturation, slight brightness boost */
+body.global-displayer-4k-hdr img {
+  -webkit-filter: contrast(1.15) saturate(1.2) brightness(1.05);
+  -moz-filter: contrast(1.15) saturate(1.2) brightness(1.05);
+  filter: contrast(1.15) saturate(1.2) brightness(1.05);
+  image-rendering: high-quality;
+  -webkit-transition: filter 0.3s ease;
+  -moz-transition: filter 0.3s ease;
+  transition: filter 0.3s ease;
+}
+
+/* 4K: Good contrast, slight saturation boost */
+body.global-displayer-4k img {
+  -webkit-filter: contrast(1.1) saturate(1.1);
+  -moz-filter: contrast(1.1) saturate(1.1);
+  filter: contrast(1.1) saturate(1.1);
+  image-rendering: high-quality;
+  -webkit-transition: filter 0.3s ease;
+  -moz-transition: filter 0.3s ease;
+  transition: filter 0.3s ease;
+}
+
+/* 1080p: Standard with slight contrast bump */
+body.global-displayer-1080p img {
+  -webkit-filter: contrast(1.05);
+  -moz-filter: contrast(1.05);
+  filter: contrast(1.05);
+  -webkit-transition: filter 0.3s ease;
+  -moz-transition: filter 0.3s ease;
+  transition: filter 0.3s ease;
+}
+
+/* 720p & Auto: Standard (no extra filters) */
+body.global-displayer-720p img,
+body.global-displayer-auto img {
+  filter: none;
+  transition: filter 0.3s ease;
+}
+
+/* 480p (Data Saver): Standard, but tell browser to prioritize speed over quality */
+body.global-displayer-480p img {
+  filter: none;
+  image-rendering: pixelated;
+  transition: filter 0.3s ease;
+}
+
+/* AI Render Styles */
+.info-box { @apply block p-4 bg-sky-50 border-l-4 border-sky-500 my-4 text-sky-900 rounded-r-lg overflow-x-auto max-w-full; -webkit-overflow-scrolling: touch; }
+.warning-box { @apply block p-4 bg-amber-50 border-l-4 border-amber-500 my-4 text-amber-900 rounded-r-lg overflow-x-auto max-w-full; -webkit-overflow-scrolling: touch; }
+.success-box { @apply block p-4 bg-emerald-50 border-l-4 border-emerald-500 my-4 text-emerald-900 rounded-r-lg overflow-x-auto max-w-full; -webkit-overflow-scrolling: touch; }
+
+.badge-success, .badge-pending, .badge-failed, .badge-warning, .badge-tip, .badge-alert {
+  @apply max-w-full overflow-x-auto whitespace-nowrap inline-block align-middle;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.badge-success::-webkit-scrollbar, 
+.badge-pending::-webkit-scrollbar, 
+.badge-failed::-webkit-scrollbar, 
+.badge-warning::-webkit-scrollbar, 
+.badge-tip::-webkit-scrollbar, 
+.badge-alert::-webkit-scrollbar {
+  display: none;
+}
+
+.badge-success { @apply bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded text-xs font-semibold; }
+.badge-pending { @apply bg-amber-100 text-amber-800 px-2 py-0.5 rounded text-xs font-semibold; }
+.badge-failed { @apply bg-red-100 text-red-800 px-2 py-0.5 rounded text-xs font-semibold; }
+.badge-warning { @apply bg-orange-100 text-orange-800 px-2 py-0.5 rounded text-xs font-semibold; }
+.badge-tip { @apply bg-sky-100 text-sky-800 px-2 py-0.5 rounded text-xs font-semibold; }
+.badge-alert { @apply bg-rose-100 text-rose-800 px-2 py-0.5 rounded text-xs font-semibold; }
+
+.red { @apply text-red-500; }
+.green { @apply text-emerald-500; }
+.blue { @apply text-blue-500; }
+.yellow { @apply text-yellow-500; }
+.purple { @apply text-purple-500; }
+
+.gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500 font-bold; }
+
+.important { @apply font-bold text-rose-600; }
+.pro-tip { @apply font-semibold text-sky-700; }
+.featured { @apply font-semibold text-amber-600; }
+.popular { @apply font-semibold text-pink-600; }
+.new { @apply font-semibold text-emerald-600; }
+.updated { @apply font-semibold text-indigo-600; }
+
+.raw-latex-error {
+  @apply text-red-500 font-bold border border-red-500 px-0.5 rounded bg-red-50/50 inline-block;
+}

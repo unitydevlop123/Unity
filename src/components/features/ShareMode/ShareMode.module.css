@@ -1,0 +1,156 @@
+.selectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  background: var(--bg-primary);
+  min-height: 56px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.closeSelBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.closeSelBtn:hover {
+  background: var(--bg-quaternary);
+}
+
+.selectionTitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── Selectable messages ─────────────────────────────────── */
+.messagesList {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.selectableRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background 0.15s;
+}
+
+.selectableRow:hover {
+  background: rgba(128, 128, 128, 0.06);
+}
+
+.selectableRow.selected {
+  background: rgba(77, 158, 247, 0.06);
+}
+
+.circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-quaternary);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.circleSelected {
+  background: #4d9ef7;
+  border-color: #4d9ef7;
+}
+
+.previewText {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  flex: 1;
+  transition: opacity 0.2s;
+}
+
+/* ── Bottom action bar ───────────────────────────────────── */
+.actionBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px 28px 20px;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.createLinkBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(124, 58, 237, 0.4);
+  background: rgba(124, 58, 237, 0.1);
+  color: #a78bfa;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s;
+  min-height: 52px;
+}
+
+.createLinkBtn:hover {
+  background: rgba(124, 58, 237, 0.18);
+  border-color: rgba(124, 58, 237, 0.6);
+}
+
+.createImageBtn {
+  flex: 1.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: none;
+  background: #4d9ef7;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+  min-height: 52px;
+}
+
+.createImageBtn:hover:not(:disabled) {
+  background: #3a8de6;
+}
+
+.createImageBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

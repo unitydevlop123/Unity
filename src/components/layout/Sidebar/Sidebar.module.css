@@ -1,0 +1,406 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 78%;
+  max-width: 320px;
+  height: 100%;
+  background: var(--bg-secondary);
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* ── Sidebar Header ─────────────────────────────────────── */
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 16px 14px 20px;
+  padding-top: max(16px, env(safe-area-inset-top, 16px));
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.sidebarLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebarTitle {
+  flex: 1;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.headerNewBtn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  border: none;
+  border-radius: 50%;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.headerNewBtn:hover {
+  background: var(--bg-quaternary);
+}
+
+/* ── Content ────────────────────────────────────────────── */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 0 16px 0;
+}
+
+.group {
+  margin-bottom: 12px;
+}
+
+.groupLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 12px 20px 6px 20px;
+}
+
+.chatItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.chatItem:hover {
+  background: rgba(128, 128, 128, 0.08);
+}
+
+.chatItem.active {
+  background: rgba(128, 128, 128, 0.14);
+}
+
+.chatItem.pinned {
+  background: rgba(77, 158, 247, 0.08);
+  border-left: 2.5px solid rgba(77, 158, 247, 0.55);
+  padding-left: calc(20px - 2.5px);
+}
+
+.chatItem.pinned:hover {
+  background: rgba(77, 158, 247, 0.13);
+}
+
+.chatItem.pinned.active {
+  background: rgba(77, 158, 247, 0.18);
+}
+
+.chatItemInner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.chatItemText {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.remixBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 7px 2px 5px;
+  border-radius: 20px;
+  background: linear-gradient(120deg, #7c3aed, #6d28d9);
+  color: #e9d5ff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  box-shadow: 0 1px 6px rgba(124, 58, 237, 0.35);
+  flex-shrink: 0;
+}
+
+.pinIcon {
+  flex-shrink: 0;
+  margin-left: 8px;
+  color: #4d9ef7;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 3px rgba(77, 158, 247, 0.5));
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border-medium);
+}
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userName {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.moreBtn {
+  font-size: 16px;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  padding: 6px 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s;
+  min-height: 44px;
+}
+
+.moreBtn:hover {
+  background: rgba(128, 128, 128, 0.1);
+}
+
+/* ── Context Menu ────────────────────────────────────────── */
+.ctxBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  animation: ctxFadeIn 0.15s ease;
+}
+
+@keyframes ctxFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ctxContainer {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: ctxScaleIn 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes ctxScaleIn {
+  from { transform: scale(0.88); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.ctxTitleRow {
+  background: var(--bg-tertiary, rgba(60, 60, 65, 0.92));
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+
+.ctxTitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ctxCard {
+  background: var(--bg-tertiary, rgba(60, 60, 65, 0.96));
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.ctxItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  min-height: 56px;
+  transition: background 0.1s;
+  text-align: left;
+}
+
+.ctxItem:hover,
+.ctxItem:active {
+  background: rgba(128, 128, 128, 0.12);
+}
+
+.ctxLabel {
+  flex: 1;
+}
+
+.ctxDelete {
+  color: #ff3b30;
+}
+
+.ctxDelete svg {
+  stroke: #ff3b30;
+}
+
+.ctxDivider {
+  height: 1px;
+  background: var(--border-subtle, rgba(128, 128, 128, 0.2));
+  margin: 0 16px;
+}
+
+/* ── Rename Modal ────────────────────────────────────────── */
+.renameBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  animation: ctxFadeIn 0.15s ease;
+}
+
+.renameModal {
+  width: 100%;
+  max-width: 320px;
+  background: var(--bg-tertiary, rgba(50, 50, 55, 0.98));
+  border-radius: 16px;
+  overflow: hidden;
+  animation: ctxScaleIn 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.renameTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  padding: 18px 20px 12px;
+  margin: 0;
+}
+
+.renameInput {
+  display: block;
+  width: 100%;
+  margin: 0 0 14px 0;
+  padding: 10px 14px;
+  font-size: 16px;
+  font-family: inherit;
+  color: var(--text-primary);
+  background: var(--bg-primary, rgba(28, 28, 30, 0.9));
+  border: 1.5px solid rgba(77, 158, 247, 0.5);
+  border-radius: 10px;
+  outline: none;
+  box-sizing: border-box;
+  /* Indent so the text doesn't overflow into padding */
+  padding-left: 20px;
+  padding-right: 20px;
+  /* Width inside modal */
+  width: calc(100% - 32px);
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.renameInput:focus {
+  border-color: #4d9ef7;
+}
+
+.renameBtns {
+  display: flex;
+  border-top: 1px solid var(--border-subtle, rgba(128,128,128,0.2));
+  height: 52px;
+}
+
+.renameCancelBtn,
+.renameDoneBtn {
+  flex: 1;
+  background: none;
+  border: none;
+  font-size: 17px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.1s;
+  min-height: 52px;
+}
+
+.renameCancelBtn {
+  color: #4d9ef7;
+  font-weight: 400;
+  border-right: 1px solid var(--border-subtle, rgba(128,128,128,0.2));
+}
+
+.renameDoneBtn {
+  color: #4d9ef7;
+  font-weight: 700;
+}
+
+.renameCancelBtn:hover,
+.renameDoneBtn:hover {
+  background: rgba(128, 128, 128, 0.1);
+}
+
+.renameVDivider {
+  width: 1px;
+  background: var(--border-subtle, rgba(128,128,128,0.2));
+  flex-shrink: 0;
+}

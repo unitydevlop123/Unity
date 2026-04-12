@@ -1,0 +1,413 @@
+@import "tailwindcss";
+
+/* ===== BASE TABLE STYLES ===== */
+.professional-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 24px 0;
+  font-family: 'Inter', sans-serif;
+  border-radius: 12px;
+  overflow: hidden;
+  /* Ensure table fits within container */
+  max-width: 100%;
+  display: block;
+  overflow-x: auto;
+  white-space: normal;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.professional-table table {
+  min-width: 100%;
+  border-collapse: collapse;
+}
+
+/* ===== STYLE 1: CLEAN / MINIMAL ===== */
+.table-minimal {
+  background: var(--card-bg, white);
+  border: 1px solid var(--border-light, #e0e0e0);
+}
+
+.table-minimal th {
+  background: transparent;
+  color: var(--chat-text, #333);
+  border-bottom: 2px solid var(--border-light, #e0e0e0);
+  font-weight: 600;
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.table-minimal td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-light, #f0f0f0);
+  color: var(--chat-text, #555);
+}
+
+.table-minimal tr:hover td {
+  background: rgba(0,0,0,0.02);
+}
+
+/* ===== STYLE 2: DARK / TECH ===== */
+.table-tech {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.table-tech th {
+  background: #1e293b;
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #334155;
+}
+
+.table-tech td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #1e293b;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+.table-tech tr:hover td {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+/* ===== STYLE 3: CLASSIC / GRID ===== */
+.table-grid {
+  background: var(--card-bg, white);
+  border: 1px solid var(--chat-text, #333);
+}
+
+.table-grid th {
+  background: var(--chat-text, #333);
+  color: var(--card-bg, white);
+  padding: 12px 16px;
+  text-align: left;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  font-weight: 600;
+}
+
+.table-grid td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--chat-text, #333);
+  border-right: 1px solid var(--chat-text, #333);
+  color: var(--chat-text, #333);
+}
+
+.table-grid tr:last-child td {
+  border-bottom: none;
+}
+
+.table-grid th:last-child,
+.table-grid td:last-child {
+  border-right: none;
+}
+
+/* ===== STYLE 4: COLORFUL / COMPARISON ===== */
+.table-comparison {
+  background: var(--card-bg, white);
+  border: none;
+}
+
+.table-comparison th {
+  background: #3b82f6;
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.table-comparison th:first-child {
+  background: #2563eb;
+  text-align: left;
+}
+
+.table-comparison td {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-light, #e0e0e0);
+  color: var(--chat-text, #333);
+}
+
+.table-comparison td:first-child {
+  text-align: left;
+  font-weight: 600;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.table-comparison tr:nth-child(even) {
+  background: rgba(0,0,0,0.02);
+}
+
+/* ===== STYLE 5: PROFESSIONAL / CORPORATE ===== */
+.table-corporate {
+  background: var(--card-bg, white);
+  border-top: 3px solid #475569;
+}
+
+.table-corporate th {
+  background: #f1f5f9;
+  color: #475569;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.table-corporate td {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.table-corporate tr:hover td {
+  background: #f8fafc;
+}
+
+/* ===== DARK MODE OVERRIDES ===== */
+.dark-theme .table-minimal {
+  background: transparent;
+  border-color: #4a5568;
+}
+.dark-theme .table-minimal th {
+  color: #e2e8f0;
+  border-bottom-color: #4a5568;
+}
+.dark-theme .table-minimal td {
+  color: #cbd5e0;
+  border-bottom-color: #2d3748;
+}
+
+.dark-theme .table-grid {
+  background: #1e293b;
+  border-color: #64748b;
+}
+.dark-theme .table-grid th {
+  background: #334155;
+  color: #f1f5f9;
+}
+.dark-theme .table-grid td {
+  color: #cbd5e0;
+  border-color: #475569;
+}
+
+.dark-theme .table-comparison {
+  background: #1e293b;
+}
+.dark-theme .table-comparison th {
+  background: #3b82f6;
+}
+.dark-theme .table-comparison th:first-child {
+  background: #2563eb;
+}
+.dark-theme .table-comparison td {
+  color: #e2e8f0;
+  border-color: #334155;
+}
+.dark-theme .table-comparison td:first-child {
+  background: rgba(59, 130, 246, 0.1);
+}
+.dark-theme .table-comparison tr:nth-child(even) {
+  background: rgba(255,255,255,0.03);
+}
+
+.dark-theme .table-corporate {
+  background: #1e293b;
+  border-top-color: #94a3b8;
+}
+.dark-theme .table-corporate th {
+  background: #0f172a;
+  color: #94a3b8;
+  border-bottom-color: #334155;
+}
+.dark-theme .table-corporate td {
+  color: #cbd5e0;
+  border-bottom-color: #334155;
+}
+.dark-theme .table-corporate tr:hover td {
+  background: #334155;
+}
+
+/* ===== STYLE 6: MODERN / CLEAN ===== */
+.table-modern {
+  background: var(--card-bg, white);
+  border-radius: 12px;
+  border: 1px solid var(--border-light, #e2e8f0);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.table-modern th {
+  background: #f8fafc;
+  color: #1e293b;
+  font-weight: 600;
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table-modern td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+}
+
+.table-modern tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== STYLE 7: COLORFUL HEADERS ===== */
+.table-colorful {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.table-colorful th {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: white;
+  padding: 16px 20px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.table-colorful td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+}
+
+.table-colorful tr:nth-child(even) {
+  background: #fdf2f8;
+}
+
+/* ===== STYLE 8: DARK THEME ===== */
+.table-dark {
+  background: #111827;
+  border: 1px solid #374151;
+  color: #f3f4f6;
+}
+
+.table-dark th {
+  background: #1f2937;
+  color: #10b981;
+  padding: 14px 20px;
+  font-weight: 600;
+  border-bottom: 1px solid #374151;
+}
+
+.table-dark td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #374151;
+}
+
+/* ===== STYLE 9: GRADIENT CARD ===== */
+.table-gradient {
+  background: white;
+  border-radius: 16px;
+  padding: 8px;
+  background: linear-gradient(to bottom right, #ffffff, #f8fafc);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.table-gradient th {
+  color: #6366f1;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  padding: 16px 20px;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.table-gradient td {
+  padding: 16px 20px;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+/* ===== STYLE 10: STRIPED ROW ===== */
+.table-striped {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.table-striped th {
+  background: #1e293b;
+  color: white;
+  padding: 12px 16px;
+}
+
+.table-striped tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.table-striped td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Dark Mode Support for New Styles */
+.dark-theme .table-modern { background: #1e293b; border-color: #334155; }
+.dark-theme .table-modern th { background: #0f172a; color: #f1f5f9; border-color: #334155; }
+.dark-theme .table-modern td { color: #cbd5e1; border-color: #334155; }
+
+.dark-theme .table-colorful { border-color: #334155; }
+.dark-theme .table-colorful td { background: #1e293b; color: #cbd5e1; border-color: #334155; }
+.dark-theme .table-colorful tr:nth-child(even) td { background: #1e1b4b; }
+
+.dark-theme .table-gradient { background: linear-gradient(to bottom right, #1e293b, #0f172a); border-color: #334155; }
+.dark-theme .table-gradient th { border-color: #334155; }
+.dark-theme .table-gradient td { color: #cbd5e1; }
+
+.dark-theme .table-striped { border-color: #334155; }
+.dark-theme .table-striped th { background: #0f172a; }
+.dark-theme .table-striped tr:nth-child(even) td { background: #1e293b; }
+.dark-theme .table-striped td { color: #cbd5e1; border-color: #334155; }
+
+/* ===== STYLE 11: GLASSMORPHISM ===== */
+.table-glass {
+  @apply backdrop-blur-md bg-white/10 dark:bg-black/20 border border-white/20 shadow-2xl rounded-2xl;
+  overflow: hidden;
+}
+
+.table-glass th {
+  @apply bg-white/20 dark:bg-white/10 text-gray-900 dark:text-white font-bold p-4 border-b border-white/20;
+}
+
+.table-glass td {
+  @apply p-4 text-gray-800 dark:text-gray-200 border-b border-white/10;
+}
+
+.table-glass tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== STYLE 12: BENTO GRID ===== */
+.table-bento {
+  @apply bg-gray-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 shadow-inner rounded-2xl p-2;
+}
+
+.table-bento table {
+  @apply border-separate border-spacing-2;
+}
+
+.table-bento th {
+  @apply bg-white dark:bg-white/10 rounded-xl p-4 text-gray-900 dark:text-white font-bold shadow-sm border border-gray-100 dark:border-white/5;
+}
+
+.table-bento td {
+  @apply bg-white dark:bg-white/5 rounded-xl p-4 text-gray-700 dark:text-gray-300 shadow-sm border border-gray-100 dark:border-white/5;
+}

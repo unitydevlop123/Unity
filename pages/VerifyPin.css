@@ -1,0 +1,66 @@
+.pin-inputs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 280px;
+  margin: 32px 0;
+}
+
+.pin-field {
+  background: var(--input-bg);
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  height: 64px;
+  width: 100%;
+  color: var(--chat-text);
+  font-size: 32px;
+  font-weight: 800;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  -moz-appearance: textfield;
+}
+
+.pin-field::-webkit-outer-spin-button,
+.pin-field::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pin-field:focus {
+  border-color: #10a37f;
+  box-shadow: 0 0 0 2px rgba(16, 163, 127, 0.2);
+  transform: translateY(-4px);
+}
+
+.fallback-pin-box {
+  background: rgba(16, 163, 127, 0.1);
+  border: 1px dashed #10a37f;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: -10px;
+}
+
+.fallback-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #10a37f;
+  text-transform: uppercase;
+}
+
+.fallback-value {
+  font-family: monospace;
+  font-size: 16px;
+  letter-spacing: 4px;
+  color: #10a37f;
+  font-weight: bold;
+}
+
+.auth-error.mt-4 {
+  margin-top: 16px;
+  width: 100%;
+}

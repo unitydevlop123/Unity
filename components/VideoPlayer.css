@@ -1,0 +1,284 @@
+.video-player-container {
+  width: 100%;
+  height: 100%;
+  background: black;
+  position: relative;
+}
+
+.video-player-container .video-js {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ===== CUSTOM BIG PLAY BUTTON ===== */
+.video-js .vjs-big-play-button {
+  background: linear-gradient(135deg, #ff4d4d, #cc0000) !important;
+  border: 3px solid white !important;
+  border-radius: 50% !important;
+  width: 80px !important;
+  height: 80px !important;
+  line-height: 80px !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.5) !important;
+  transition: all 0.3s ease !important;
+}
+
+.video-js .vjs-big-play-button:hover {
+  transform: translate(-50%, -50%) scale(1.1) !important;
+  background: linear-gradient(135deg, #ff6666, #ff0000) !important;
+}
+
+.video-js .vjs-big-play-button .vjs-icon-placeholder {
+  color: white !important;
+  font-size: 40px !important;
+  line-height: 80px !important;
+}
+
+/* ===== GLOWING PROGRESS BAR ===== */
+.video-js .vjs-progress-control {
+  height: 6px !important;
+}
+
+.video-js .vjs-progress-holder {
+  height: 6px !important;
+}
+
+.video-js .vjs-play-progress {
+  background: linear-gradient(90deg, #ff4d4d, #ff9999) !important;
+  box-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d !important;
+}
+
+.video-js .vjs-play-progress:before {
+  display: none !important;
+}
+
+/* ===== CUSTOM CONTROLS ===== */
+.video-js .vjs-control-bar {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)) !important;
+  padding: 10px 10px 0 10px !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.video-js .vjs-button {
+  height: 100% !important;
+}
+
+.video-js .vjs-time-control {
+  color: white !important;
+  font-size: 13px !important;
+  font-weight: bold !important;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5) !important;
+  line-height: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.video-js .vjs-volume-panel {
+  margin-right: 10px !important;
+}
+
+.video-js .vjs-fullscreen-control {
+  color: white !important;
+}
+
+/* ===== CINEMA MODE (FOR STREAM BUTTON) ===== */
+.video-player-container.cinema-mode {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: black;
+}
+
+.video-player-container.cinema-mode video {
+  object-fit: contain;
+}
+
+/* ===== ELITE CURTAIN OVERLAY ===== */
+.player-curtain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(12px);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s ease, visibility 0.8s ease, background 0.3s ease;
+}
+
+.player-curtain.clickable {
+  cursor: pointer;
+  background: rgba(10, 10, 10, 0.4); /* Semi-transparent for Tap to Play */
+}
+
+.player-curtain.pass-through {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.curtain-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 210;
+}
+
+.play-trigger-icon {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #ff4d4d, #cc0000);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 20px;
+  box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.player-curtain.clickable:hover .play-trigger-icon {
+  transform: scale(1.1);
+  box-shadow: 0 0 60px rgba(255, 0, 0, 0.8);
+}
+
+.curtain-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.pulse {
+  animation: text-pulse 2s infinite;
+}
+
+@keyframes text-pulse {
+  0% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+.curtain-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #ff4d4d, transparent);
+  box-shadow: 0 0 20px #ff4d4d;
+}
+
+/* ===== ELITE CROP (HIDE DAILYMOTION BRANDING) ===== */
+.video-player-container {
+  overflow: hidden; /* Ensure cropped parts are hidden */
+  padding-top: 5px; /* Slight offset from status bar */
+  background: black;
+}
+
+.unity-shield {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
+.video-player-container iframe {
+  /* Removed transform to ensure browser doesn't block autoplay due to obscured element */
+  width: 100%;
+  height: 100%;
+}
+
+/* Show video when started - kept for potential future use but iframe is now visible by default */
+.video-player-container.has-started iframe {
+  opacity: 1;
+}
+
+/* Disable crop in fullscreen */
+.video-player-container.is-fullscreen iframe {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* Blinder to cover top text */
+.video-player-blinder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 25px; /* Reduced height */
+  background: black;
+  z-index: 10;
+}
+
+/* Bottom Stealth Mask */
+.bottom-stealth-mask {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to top, rgba(0,0,0,1), transparent);
+  z-index: 10;
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* ===== CUSTOM STREAM BUTTON ===== */
+.stream-button {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff4d4d, #cc0000);
+  color: white;
+  border: none;
+  padding: 16px 48px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.05); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+.stream-wave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  background: rgba(255, 0, 0, 0.3);
+  transform: translate(-50%, -50%) scale(1);
+  animation: wave 2s infinite;
+  z-index: -1;
+}
+
+@keyframes wave {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}

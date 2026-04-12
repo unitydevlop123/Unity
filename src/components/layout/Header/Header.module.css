@@ -1,0 +1,143 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: var(--bg-primary);
+  position: relative;
+  z-index: 10;
+  min-height: 56px;
+  transition: background 0.2s;
+}
+
+.menuBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+}
+
+.menuLine {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+}
+
+.leftSection, .rightSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+}
+
+.rightSection {
+  justify-content: flex-end;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actionBtn:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 0 8px;
+}
+
+/* ── Premium pill wrapper ── */
+.titlePill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 18px;
+  border-radius: 50px;
+  background: var(--bg-secondary);
+  cursor: default;
+  /* Outer glow ring via box-shadow */
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.12),
+    0 0 0 3.5px rgba(255, 255, 255, 0.055),
+    0 0 12px 1px rgba(255, 255, 255, 0.06);
+  transition: box-shadow 0.2s;
+}
+
+/* Light theme ring */
+[data-theme="light"] .titlePill {
+  background: #ffffff;
+  box-shadow:
+    0 0 0 1.5px rgba(0, 0, 0, 0.14),
+    0 0 0 3.5px rgba(0, 0, 0, 0.055),
+    0 0 10px 1px rgba(0, 0, 0, 0.06);
+}
+
+.titlePill:hover {
+  box-shadow:
+    0 0 0 1.5px rgba(255, 255, 255, 0.2),
+    0 0 0 3.5px rgba(255, 255, 255, 0.09),
+    0 0 16px 2px rgba(255, 255, 255, 0.1);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+  letter-spacing: -0.1px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 1px;
+}
+
+.pillChevron {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+.newChatBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--text-primary);
+  background: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.newChatBtn:hover {
+  background: rgba(128, 128, 128, 0.12);
+}
