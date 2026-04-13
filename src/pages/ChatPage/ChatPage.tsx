@@ -16,8 +16,6 @@ import SplitBrain from '@/components/features/SplitBrain/SplitBrain';
 import RemixModal from '@/components/features/RemixModal/RemixModal';
 import SplitPersonality from '@/components/features/SplitPersonality/SplitPersonality';
 import SilenceBreaker from '@/components/features/SilenceBreaker/SilenceBreaker';
-import Settings from '@/components/features/Settings/Settings';
-import MemoryMap from '@/components/features/MemoryMap/MemoryMap';
 import { analyzeWritingStyle, buildEchoSystemPrompt } from '@/components/features/EchoReplies/EchoReplies';
 import styles from './ChatPage.module.css';
 
@@ -49,8 +47,6 @@ const ChatPage: React.FC<ChatPageProps> = ({
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [showImagePreview, setShowImagePreview] = useState(false);
   const [remixModalOpen, setRemixModalOpen] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [memoryMapOpen, setMemoryMapOpen] = useState(false);
 
   // Split-Personality Debate state
   const [splitPersonalityOpen, setSplitPersonalityOpen] = useState(false);
@@ -447,9 +443,6 @@ const ChatPage: React.FC<ChatPageProps> = ({
         subtitle={chatTitle ? (chatMode === 'expert' ? 'UnityDev Pro' : 'UnityDeV AI') : undefined}
         onMenuClick={onMenuClick}
         onNewChat={onNewChat}
-        onSettingsClick={() => setSettingsOpen(true)}
-        onMemoryMapClick={() => setMemoryMapOpen(true)}
-        onRemixClick={() => setRemixModalOpen(true)}
       />
 
       <div
@@ -536,31 +529,6 @@ const ChatPage: React.FC<ChatPageProps> = ({
             setSplitBrainOpen(false);
             setPendingSplitMessage(null);
           }}
-        />
-      )}
-
-      {/* Settings Modal */}
-      <Settings
-        isOpen={settingsOpen}
-        onClose={() => setSettingsOpen(false)}
-        onOpenMemoryMap={() => {
-          setSettingsOpen(false);
-          setMemoryMapOpen(true);
-        }}
-        onImportRemix={(chat) => {
-          onAddChat?.(chat);
-          setSettingsOpen(false);
-        }}
-        existingChats={[]}
-      />
-
-      {/* Memory Map Overlay */}
-      {memoryMapOpen && (
-        <MemoryMap
-          onClose={() => setMemoryMapOpen(false)}
-          chats={activeChat ? [activeChat] : []}
-          activeChatId={activeChat?.id || null}
-          onSelectChat={() => {}}
         />
       )}
     </div>

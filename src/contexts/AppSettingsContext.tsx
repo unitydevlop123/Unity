@@ -12,14 +12,14 @@ export interface AppSettings {
 }
 
 const DEFAULT_SETTINGS: AppSettings = {
-  splitBrainMode: true,
-  memoryMapEnabled: true,
+  splitBrainMode: false,
+  memoryMapEnabled: false,
   ghostSuggestionsEnabled: true,
-  // New Functionality — all ON by default
-  echoRepliesEnabled: true,
-  ghostModeEnabled: true,
-  splitPersonalityEnabled: true,
-  silenceBreakerEnabled: true,
+  // New Functionality — all OFF by default
+  echoRepliesEnabled: false,
+  ghostModeEnabled: false,
+  splitPersonalityEnabled: false,
+  silenceBreakerEnabled: false,
 };
 
 interface AppSettingsContextValue {

@@ -2,7 +2,6 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Message } from '@/types';
 import { useAppSettings } from '@/contexts/AppSettingsContext';
 import { GhostModeMessage } from '@/components/features/GhostMode/GhostMode';
-import MarkdownRenderer from '../../../../components/chat/MarkdownRenderer';
 import styles from './ChatMessage.module.css';
 
 interface ChatMessageProps {
@@ -23,6 +22,18 @@ function formatBytes(bytes: number): string {
   if (bytes < 1024) return bytes + 'B';
   if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + 'KB';
   return (bytes / (1024 * 1024)).toFixed(2) + 'MB';
+}
+
+function parseInline(text: string, keyPrefix: string): React.ReactNode[] {
+  // Handle bold (**text**) and inline code (`code`)
+  const segments = text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g);
+  return segments.map((part, j) => {
+    if (part.startsWith('**') && part.endsWith('**'))
+      return <strong key={`${keyPrefix}-b${j}`}>{part.slice(2, -2)}</strong>;
+    if (part.startsWith('`') && part.endsWith('`'))
+      return <code key={`${keyPrefix}-c${j}`} className={styles.inlineCode}>{part.slice(1, -1)}</code>;
+    return <React.Fragment key={`${keyPrefix}-t${j}`}>{part}</React.Fragment>;
+  });
 }
 
 // ── Debate card renderer (for __DEBATE__ messages in main chat) ─────────────
@@ -75,6 +86,87 @@ function renderDebateCards(text: string): React.ReactNode {
       )}
     </div>
   );
+}
+
+function renderContent(text: string) {
+  // Safety net: strip any raw <think> blocks that leaked through
+  const cleaned = text.replace(/<think>[\s\S]*?<\/think>/gi, '').trim();
+  const lines = cleaned.split('\n');
+  const output: React.ReactNode[] = [];
+  let paraLines: string[] = [];
+  let key = 0;
+
+  const flushPara = () => {
+    if (paraLines.length === 0) return;
+    // Build paragraph with <br> between lines
+    const content: React.ReactNode[] = [];
+    paraLines.forEach((l, i) => {
+      content.push(...parseInline(l, `p${key}-${i}`));
+      if (i < paraLines.length - 1) content.push(<br key={`br${key}-${i}`} />);
+    });
+    output.push(<p key={`para-${key++}`} className={styles.para}>{content}</p>);
+    paraLines = [];
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Horizontal rule
+    if (/^-{3,}$/.test(trimmed) || /^\*{3,}$/.test(trimmed) || /^_{3,}$/.test(trimmed)) {
+      flushPara();
+      output.push(<hr key={`hr-${key++}`} className={styles.hrule} />);
+      continue;
+    }
+
+    // Blank line → flush paragraph
+    if (trimmed === '') {
+      flushPara();
+      continue;
+    }
+
+    // Numbered list item
+    if (/^\d+\.\s/.test(line)) {
+      flushPara();
+      output.push(
+        <p key={`li-${key++}`} className={styles.listItem}>
+          {parseInline(line, `li${key}`)}
+        </p>
+      );
+      continue;
+    }
+
+    // Bullet list item
+    if (/^[\-\*]\s/.test(line)) {
+      flushPara();
+      output.push(
+        <p key={`bul-${key++}`} className={styles.listItem}>
+          {'• '}{parseInline(line.slice(2), `bul${key}`)}
+        </p>
+      );
+      continue;
+    }
+
+    // Heading (#, ##, ###)
+    const headingMatch = line.match(/^(#{1,3})\s+(.+)/);
+    if (headingMatch) {
+      flushPara();
+      const level = headingMatch[1].length;
+      const headingClass = level === 1 ? styles.h1 : level === 2 ? styles.h2 : styles.h3;
+      output.push(
+        <p key={`h${level}-${key++}`} className={headingClass}>
+          {parseInline(headingMatch[2], `hd${key}`)}
+        </p>
+      );
+      continue;
+    }
+
+    // Regular line — accumulate into paragraph
+    paraLines.push(line);
+  }
+
+  flushPara();
+  return output;
 }
 
 const FileDocIcon = () => (
@@ -370,7 +462,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, onShare }) => {
           >
             {isDebateMessage(message.content)
               ? renderDebateCards(message.content)
-              : <MarkdownRenderer content={message.content} />}
+              : renderContent(message.content)}
             {message.isStreaming && <span className={styles.streamCursor} />}
           </div>
         ) : message.isStreaming ? null : null}

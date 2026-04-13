@@ -10,7 +10,6 @@ import RateLimitMessage from './components/chat/RateLimitMessage';
 import ChatInput from './components/chat/ChatInput';
 import SplashScreen from './components/SplashScreen';
 import { Message, Conversation } from './types/index';
-import { Chat } from './src/types/index';
 import { firebaseRest } from './services/firebaseRest';
 import { callGroqAI, SYSTEM_PROMPT, reviewAndFixResponse, getDynamicSystemPrompt } from './services/aiService';
 import { AVAILABLE_MODELS, DEFAULT_MODEL } from './src/config/models';
